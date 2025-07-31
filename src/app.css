@@ -13,25 +13,6 @@
 
 @layer base {
 	body {
-		font-family: var(--font-sans);
-		background: var(--color-surface);
-		color: var(--color-surface-text);
-	}
-	body::before {
-		content: '';
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background-image: url('/images/gradients.png');
-		background-size: cover;
-		background-position: center;
-		background-repeat: no-repeat;
-		transform: scale(1.2);
-		z-index: -1;
-		opacity: 0.2;
-		filter: blur(125px);
-		pointer-events: none;
+		@apply min-h-[100dvh] bg-surface py-4 font-sans text-surface-text before:pointer-events-none before:fixed before:top-0 before:right-0 before:bottom-0 before:left-0 before:z-[-1] before:scale-[1.2] before:bg-[url('/images/gradients.png')] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-20 before:blur-[125px] sm:py-8;
 	}
 }
