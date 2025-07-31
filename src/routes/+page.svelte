@@ -1,21 +1,20 @@
 <script lang="ts">
 	import Header from '../components/Header.svelte';
 	import Intro from '../components/Intro.svelte';
+	import Work from '../components/Work.svelte';
+	import Education from '../components/Education.svelte';
 
-	type Language = {
-		code: 'en' | 'hu';
-		name: 'English' | 'Magyar';
-	};
+	import { currentLanguage, changeLanguage } from '$lib/i18n.js';
+	import { type LanguageCode } from '$lib/translations/index.js';
 
-	let lang = $state<Language>({ code: 'en', name: 'English' });
-
-	let currentLanguage = $derived(lang.code);
-	export function changeLanguage(newLang: Language) {
-		lang = newLang;
+	function handleLanguageChange(langCode: LanguageCode) {
+		changeLanguage(langCode);
 	}
 </script>
 
 <main class="container mx-auto flex max-w-4xl flex-col gap-8 px-4 sm:px-8">
-	<Header {changeLanguage} {currentLanguage} />
+	<Header changeLanguage={handleLanguageChange} currentLanguage={$currentLanguage} />
 	<Intro />
+	<Work />
+	<Education />
 </main>

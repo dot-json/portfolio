@@ -37,7 +37,10 @@
 	});
 </script>
 
-<div id="reveal" class="grid place-items-center font-title text-5xl font-bold text-zinc-500">
+<div
+	id="reveal"
+	class="grid place-items-center font-title text-4xl font-bold text-zinc-500 sm:text-5xl"
+>
 	<span bind:this={wm}>000.0000000</span>
 </div>
 

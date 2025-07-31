@@ -5,8 +5,10 @@
 	--font-title: Quantico, sans-serif;
 
 	--color-surface: oklch(0.1266 0 0);
+	--color-surface-accent: oklch(0.1636 0.0522 286.19);
+	--color-surface-border: oklch(0.45 0.0452 284.11);
 	--color-surface-text: oklch(0.9764 0 0);
-	--color-surface-hover: oklch(0.1636 0.0522 286.19);
+	--color-surface-text-muted: oklch(0.75 0 0.1);
 }
 
 @layer base {
