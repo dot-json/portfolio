@@ -11,9 +11,9 @@
 </script>
 
 <header
-	class="sticky top-0 flex h-16 items-center justify-between rounded-2xl border border-zinc-700/50 bg-zinc-800/15 px-4 backdrop-blur-2xl"
+	class="sticky top-0 flex h-16 items-center justify-between rounded-2xl border border-zinc-700/50 px-4 backdrop-blur-3xl"
 >
-	<h1 class="text-2xl font-bold">Portfolio</h1>
+	<h1 class="font-title text-2xl font-bold"></h1>
 	<div class="flex">
 		<button
 			id="en-button"
