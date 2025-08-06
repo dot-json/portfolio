@@ -26,13 +26,17 @@
 				}
 				iteration += 1 / 2;
 			}
-		}, 80);
+		}, 60);
 	};
 
 	onMount(() => {
 		if (wm != null) {
+			document.body.style.overflow = 'hidden';
 			wm.innerText = '000.0000000';
 			scrambleWord();
+			setTimeout(() => {
+				document.body.style.overflow = '';
+			}, 2000);
 		}
 	});
 </script>
@@ -50,11 +54,11 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: 100%;
+		height: 100vh;
 		background-color: var(--color-surface);
 		z-index: 9999;
 		pointer-events: none;
-		animation: reveal 3s ease-in-out forwards;
+		animation: reveal 2s ease-in-out forwards;
 	}
 	#reveal::before {
 		content: '';

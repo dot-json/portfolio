@@ -37,7 +37,7 @@
 					<div class="flex flex-wrap gap-2">
 						{#each $t.work.jobs[job.key].skills as skill}
 							<span
-								class="rounded-full border border-surface-border/50 bg-surface-accent px-2 py-1 text-xs font-medium text-surface-text"
+								class="rounded-full border border-surface-border/50 bg-surface-accent px-2 py-1 text-xs font-medium"
 							>
 								{skill}
 							</span>
