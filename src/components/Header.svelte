@@ -3,7 +3,7 @@
 	import { languages, type LanguageCode } from '$lib/translations/index.js';
 	import { cn } from '$lib/utils.js';
 	import { page } from '$app/state';
-	import { fly } from 'svelte/transition';
+	import { beforeNavigate } from '$app/navigation';
 
 	const { changeLanguage, currentLanguage } = $props<{
 		changeLanguage: (langCode: LanguageCode) => void;
@@ -11,13 +11,25 @@
 	}>();
 
 	let openMenu = $state<boolean>(false);
+	let isNavigating = $state<boolean>(false);
+
+	beforeNavigate(() => {
+		isNavigating = true;
+		openMenu = false;
+
+		document.body.offsetHeight;
+		setTimeout(() => {
+			isNavigating = false;
+		}, 100);
+	});
 </script>
 
 <header class="sticky top-4 z-[771] flex h-16">
 	<div
 		class={cn(
-			'absolute inset-0 h-16 overflow-hidden rounded-2xl border border-surface-border/50 bg-surface-accent/25 px-4 shadow-2xl backdrop-blur-lg transition-all sm:overflow-visible',
-			openMenu && 'h-48'
+			'absolute inset-0 h-16 overflow-hidden rounded-2xl border border-surface-border/50 bg-surface-accent/25 px-4 shadow-2xl backdrop-blur-lg sm:overflow-visible',
+			openMenu && 'h-48',
+			!isNavigating && 'transition-all'
 		)}
 	>
 		<div class="flex h-16 w-full items-center justify-between">
@@ -108,28 +120,16 @@
 		<div class="flex flex-col items-end gap-1 text-end">
 			<nav class="flex flex-col gap-3">
 				{#if openMenu}
-					<a
-						in:fly={{ delay: 100 }}
-						out:fly
-						href="/"
-						class="text-xl font-medium"
-						onclick={() => (openMenu = false)}>HOME</a
-					>
-					<a
-						in:fly={{ delay: 200 }}
-						out:fly
-						href="/skills"
-						class="text-xl font-medium"
-						onclick={() => (openMenu = false)}>SKILLS</a
+					<a href="/" class="text-xl font-medium" onclick={() => (openMenu = false)}>HOME</a>
+					<a href="/skills" class="text-xl font-medium" onclick={() => (openMenu = false)}>SKILLS</a
 					>
 					<!-- <a
-						in:fly={{ delay: 300 }}
-						out:fly
+
 						href="/projects"
 						class="text-xl font-medium"
 						onclick={() => (openMenu = false)}>PROJECTS</a
 					> -->
-					<div in:fly={{ delay: 400 }} out:fly class="flex w-fit self-end">
+					<div class="flex w-fit self-end">
 						{#each languages as lang}
 							<button
 								class="relative cursor-pointer rounded p-1.5"

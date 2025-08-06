@@ -13,7 +13,7 @@
 	}
 
 	onNavigate((navigation) => {
-		if (!document.startViewTransition) return;
+		if (!document.startViewTransition || window.innerWidth < 640) return;
 
 		return new Promise((resolve) => {
 			document.startViewTransition(async () => {
